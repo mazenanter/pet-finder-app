@@ -7,4 +7,5 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await ScreenUtil.ensureScreenSize();
   runApp(PetFinderApp(appRouter: AppRouter()));
+  runApp(PetFinderApp());
 }
