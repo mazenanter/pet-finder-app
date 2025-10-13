@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:pet_finder_app/core/routing/app_router.dart';
+import 'package:pet_finder_app/core/routing/routes.dart';
 
 class PetFinderApp extends StatelessWidget {
-  const PetFinderApp({super.key});
-  //final AppRouter appRouter;
+  const PetFinderApp({super.key, required this.appRouter});
+  final AppRouter appRouter;
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
@@ -16,8 +18,8 @@ class PetFinderApp extends StatelessWidget {
           //   primaryColor: ColorsManager.primaryColor,
           scaffoldBackgroundColor: Colors.white,
         ),
-        // initialRoute: Routes.onBoardingScreen,
-        // onGenerateRoute: appRouter.generateRoute,
+        initialRoute: Routes.onBoardingScreen,
+        onGenerateRoute: appRouter.generateRoute,
       ),
     );
   }
