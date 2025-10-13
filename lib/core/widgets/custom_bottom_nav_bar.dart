@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:hugeicons/hugeicons.dart';
 
 class CustomBottomNavBar extends StatelessWidget {
   final int currentIndex;
@@ -31,22 +32,23 @@ class CustomBottomNavBar extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             BottomNavItem(
-              icon: Icons.home,
+              icon: HugeIcons.strokeRoundedHome04,
+
               isSelected: currentIndex == 0,
               onTap: () => onTap(0),
             ),
             BottomNavItem(
-              icon: Icons.favorite_border,
+              icon: HugeIcons.strokeRoundedFavourite,
               isSelected: currentIndex == 1,
               onTap: () => onTap(1),
             ),
             BottomNavItem(
-              icon: Icons.chat_bubble_outline,
+              icon: HugeIcons.strokeRoundedMessage02,
               isSelected: currentIndex == 2,
               onTap: () => onTap(2),
             ),
             BottomNavItem(
-              icon: Icons.person_outline,
+              icon: HugeIcons.strokeRoundedUserCircle,
               isSelected: currentIndex == 3,
               onTap: () => onTap(3),
             ),
@@ -58,7 +60,7 @@ class CustomBottomNavBar extends StatelessWidget {
 }
 
 class BottomNavItem extends StatelessWidget {
-  final IconData icon;
+  final List<List<dynamic>> icon;
   final bool isSelected;
   final VoidCallback onTap;
 
@@ -75,8 +77,8 @@ class BottomNavItem extends StatelessWidget {
       onTap: onTap,
       child: Container(
         padding: EdgeInsets.symmetric(vertical: 12.h),
-        child: Icon(
-          icon,
+        child: HugeIcon(
+          icon: icon,
           size: 26.sp,
           color: isSelected ? const Color(0xff00CEC9) : Colors.grey[400],
         ),
