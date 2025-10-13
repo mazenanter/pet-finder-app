@@ -5,5 +5,6 @@ import 'package:pet_finder_app/pet_finder_app.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await ScreenUtil.ensureScreenSize();
+  //test
   runApp(PetFinderApp());
 }
