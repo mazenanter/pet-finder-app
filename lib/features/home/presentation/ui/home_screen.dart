@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pet_finder_app/core/helpers/spacing.dart';
+import 'package:pet_finder_app/features/home/presentation/ui/widgets/custom_search_bar.dart';
 import 'package:pet_finder_app/features/home/presentation/ui/widgets/home_header.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -11,7 +12,11 @@ class HomeScreen extends StatelessWidget {
       body: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: [const HomeHeader(), verticalSpace(20)],
+          children: [
+            const HomeHeader(),
+            verticalSpace(20),
+            const CustomSearchBar(),
+          ],
         ),
       ),
     );
