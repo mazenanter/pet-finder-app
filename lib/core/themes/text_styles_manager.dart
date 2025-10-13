@@ -8,6 +8,11 @@ class TextStylesManager {
     fontWeight: FontWeight.bold,
     color: ColorsManager.blackColor,
   );
+  static TextStyle font24Bold = TextStyle(
+    fontSize: 24.sp,
+    fontWeight: FontWeight.bold,
+    color: ColorsManager.blackColor,
+  );
   static TextStyle font16Regular = TextStyle(
     fontSize: 16.sp,
     fontWeight: FontWeight.w400,
