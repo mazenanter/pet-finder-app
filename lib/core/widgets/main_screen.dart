@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pet_finder_app/core/widgets/custom_bottom_nav_bar.dart';
+import 'package:pet_finder_app/features/favourite/presentation/ui/favorite_screen.dart';
 import 'package:pet_finder_app/features/home/presentation/ui/home_screen.dart';
 
 class MainScreen extends StatefulWidget {
@@ -14,12 +15,9 @@ class _MainScreenState extends State<MainScreen> {
 
   final List<Widget> screens = [
     const HomeScreen(),
+    FavoriteScreen(),
     Container(),
     Container(),
-    Container(),
-    // const FavoriteScreen(),
-    // const MessageScreen(),
-    // const ProfileScreen(),
   ];
 
   @override
