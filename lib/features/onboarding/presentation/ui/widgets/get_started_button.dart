@@ -15,7 +15,7 @@ class GetStartedButton extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: 44.w),
       child: AppTextButton(
         onPressed: () {
-          context.pushNamedAndRemoveUntil(Routes.homeScreen);
+          context.pushNamedAndRemoveUntil(Routes.mainScreen);
         },
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
