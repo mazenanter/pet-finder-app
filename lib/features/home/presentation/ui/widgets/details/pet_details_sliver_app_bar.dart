@@ -16,7 +16,7 @@ class PetDetailsSliverAppBar extends StatelessWidget {
       expandedHeight: 350.h,
       floating: false,
       pinned: true,
-
+      backgroundColor: Colors.white,
       elevation: 0,
       leading: Padding(
         padding: EdgeInsets.only(left: 14.w),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pet_finder_app/features/home/presentation/ui/widgets/details/pet_details_content.dart';
 import 'package:pet_finder_app/features/home/presentation/ui/widgets/details/pet_details_sliver_app_bar.dart';
 import 'package:pet_finder_app/features/home/presentation/ui/widgets/favourite_button.dart';
 
@@ -12,7 +13,12 @@ class PetDetailsScreen extends StatelessWidget {
     return Scaffold(
       body: Stack(
         children: [
-          CustomScrollView(slivers: [PetDetailsSliverAppBar(pet: pet)]),
+          CustomScrollView(
+            slivers: [
+              PetDetailsSliverAppBar(pet: pet),
+              SliverToBoxAdapter(child: PetDetailsContent(pet: pet)),
+            ],
+          ),
         ],
       ),
     );
