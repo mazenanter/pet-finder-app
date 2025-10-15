@@ -28,4 +28,7 @@ abstract class ApiService {
 
   @GET('${ApiConstants.images}/{image_id}')
   Future<BreedDetailsModel> getImages(@Path("image_id") String imageId);
+
+  @DELETE('${ApiConstants.favroite}/{favorite_id}')
+  Future<String> deleteFavorite(@Path("favorite_id") int favoriteId);
 }
