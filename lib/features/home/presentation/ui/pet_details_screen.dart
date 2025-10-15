@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:pet_finder_app/features/home/domain/entities/breed_entity.dart';
 import 'package:pet_finder_app/features/home/presentation/ui/widgets/details/adopt_me_button.dart';
 import 'package:pet_finder_app/features/home/presentation/ui/widgets/details/pet_details_content.dart';
 import 'package:pet_finder_app/features/home/presentation/ui/widgets/details/pet_details_sliver_app_bar.dart';
-import 'package:pet_finder_app/features/home/presentation/ui/widgets/favourite_button.dart';
 
 class PetDetailsScreen extends StatelessWidget {
-  final PetModel pet;
+  final BreedEntity pet;
 
   const PetDetailsScreen({super.key, required this.pet});
 

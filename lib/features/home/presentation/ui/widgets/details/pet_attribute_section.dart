@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pet_finder_app/core/helpers/spacing.dart';
+import 'package:pet_finder_app/features/home/domain/entities/breed_entity.dart';
 import 'package:pet_finder_app/features/home/presentation/ui/widgets/details/attribute_card.dart';
-import 'package:pet_finder_app/features/home/presentation/ui/widgets/favourite_button.dart';
 
 class PetAttributesSection extends StatelessWidget {
-  final PetModel pet;
+  final BreedEntity pet;
 
   const PetAttributesSection({super.key, required this.pet});
 
@@ -16,7 +16,7 @@ class PetAttributesSection extends StatelessWidget {
       child: Row(
         children: [
           Expanded(
-            child: AttributeCard(label: 'Gender', value: pet.gender),
+            child: AttributeCard(label: 'Gender', value: pet.origin),
           ),
           horizontalSpace(21),
           Expanded(

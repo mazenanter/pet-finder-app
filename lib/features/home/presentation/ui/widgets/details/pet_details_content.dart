@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:pet_finder_app/features/home/domain/entities/breed_entity.dart';
 import 'package:pet_finder_app/features/home/presentation/ui/widgets/details/about_section.dart';
 import 'package:pet_finder_app/features/home/presentation/ui/widgets/details/details_pet_info.dart';
 import 'package:pet_finder_app/features/home/presentation/ui/widgets/details/pet_attribute_section.dart';
-import 'package:pet_finder_app/features/home/presentation/ui/widgets/favourite_button.dart';
 
 import '../../../../../../core/helpers/spacing.dart';
 
 class PetDetailsContent extends StatelessWidget {
-  final PetModel pet;
+  final BreedEntity pet;
 
   const PetDetailsContent({super.key, required this.pet});
 

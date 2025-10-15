@@ -1,12 +1,15 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pet_finder_app/core/helpers/extension.dart';
 import 'package:pet_finder_app/core/themes/colors_manager.dart';
+import 'package:pet_finder_app/features/home/domain/entities/breed_entity.dart';
 import 'package:pet_finder_app/features/home/presentation/ui/widgets/details/detials_favorite_button.dart';
-import 'package:pet_finder_app/features/home/presentation/ui/widgets/favourite_button.dart';
+
+import '../../../../../favourite/presentation/ui/widgets/sequential_loading.dart';
 
 class PetDetailsSliverAppBar extends StatelessWidget {
-  final PetModel pet;
+  final BreedEntity pet;
 
   const PetDetailsSliverAppBar({super.key, required this.pet});
 
@@ -49,12 +52,13 @@ class PetDetailsSliverAppBar extends StatelessWidget {
               ),
             ),
 
-            child: Center(
-              child: Icon(
-                Icons.pets,
-                size: 150.sp,
-                color: Colors.white.withOpacity(0.3),
-              ),
+            child: CachedNetworkImage(
+              imageUrl: pet.imageUrl.toImageUrl(),
+              fit: BoxFit.cover,
+              placeholder: (context, url) =>
+                  const Center(child: SequentialLoading()),
+              errorWidget: (context, url, error) =>
+                  Icon(Icons.pets, size: 150.sp),
             ),
           ),
         ),
