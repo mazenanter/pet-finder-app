@@ -95,7 +95,10 @@ class FavoritePetCard extends StatelessWidget {
                       ],
                     ),
                   ),
-                  const FavoriteIconButton(isFavorite: true),
+                  FavoriteIconButton(
+                    isFavorite: true,
+                    favoriteId: favoriteModel.id,
+                  ),
                 ],
               ),
             ),
