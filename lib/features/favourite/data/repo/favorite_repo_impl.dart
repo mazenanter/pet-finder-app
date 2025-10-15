@@ -43,4 +43,15 @@ class FavoriteRepoImpl extends FavoriteRepo {
       return Failure(ApiErrorHandler.handle(error));
     }
   }
+
+  @override
+  Future<ApiResult<String>> deleteFavorite(int favoriteId) async {
+    try {
+      final res = await favoriteRemoteDataSource.deleteFavorite(favoriteId);
+
+      return Success(res);
+    } catch (error) {
+      return Failure(ApiErrorHandler.handle(error));
+    }
+  }
 }

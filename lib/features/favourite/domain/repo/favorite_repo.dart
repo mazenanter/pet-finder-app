@@ -9,4 +9,6 @@ abstract class FavoriteRepo {
   );
 
   Future<ApiResult<List<FavoriteModel>>> getFavorites();
+
+  Future<ApiResult<String>> deleteFavorite(int favoriteId);
 }

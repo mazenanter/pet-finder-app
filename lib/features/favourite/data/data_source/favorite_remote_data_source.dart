@@ -25,4 +25,9 @@ class FavoriteRemoteDataSource {
     final response = await apiService.getImages(imageId);
     return response;
   }
+
+  Future<String> deleteFavorite(int favoriteId) async {
+    final res = await apiService.deleteFavorite(favoriteId);
+    return res;
+  }
 }
