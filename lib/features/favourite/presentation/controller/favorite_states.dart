@@ -34,3 +34,15 @@ class GetFavoritesError extends FavoriteStates {
   final String message;
   GetFavoritesError(this.message);
 }
+
+class DeleteFavoriteLoading extends FavoriteStates {}
+
+class DeleteFavoriteSuccess extends FavoriteStates {
+  final String message;
+  DeleteFavoriteSuccess(this.message);
+}
+
+class DeleteFavoriteFailure extends FavoriteStates {
+  final String message;
+  DeleteFavoriteFailure(this.message);
+}

@@ -5,6 +5,7 @@ import 'package:pet_finder_app/features/favourite/data/data_source/favorite_remo
 import 'package:pet_finder_app/features/favourite/data/repo/favorite_repo_impl.dart';
 import 'package:pet_finder_app/features/favourite/domain/repo/favorite_repo.dart';
 import 'package:pet_finder_app/features/favourite/domain/use_cases/add_favorite_use_case.dart';
+import 'package:pet_finder_app/features/favourite/domain/use_cases/delete_favorite_use_case.dart';
 import 'package:pet_finder_app/features/favourite/domain/use_cases/get_favorite_use_case.dart';
 import 'package:pet_finder_app/features/favourite/presentation/controller/favorite_cubit.dart';
 import 'package:pet_finder_app/features/home/data/data_source/home_remote_data_source.dart';
@@ -48,9 +49,15 @@ Future<void> setupGetIt() async {
 
   getIt.registerLazySingleton(() => AddFavoriteUseCase(getIt<FavoriteRepo>()));
   getIt.registerLazySingleton(() => GetFavoriteUseCase(getIt<FavoriteRepo>()));
+  getIt.registerLazySingleton(
+    () => DeleteFavoriteUseCase(getIt<FavoriteRepo>()),
+  );
 
   getIt.registerFactory(
-    () =>
-        FavoriteCubit(getIt<AddFavoriteUseCase>(), getIt<GetFavoriteUseCase>()),
+    () => FavoriteCubit(
+      getIt<AddFavoriteUseCase>(),
+      getIt<GetFavoriteUseCase>(),
+      getIt<DeleteFavoriteUseCase>(),
+    ),
   );
 }
