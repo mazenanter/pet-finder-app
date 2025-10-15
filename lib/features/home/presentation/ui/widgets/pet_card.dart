@@ -41,7 +41,7 @@ class PetCard extends StatelessWidget {
             ),
             horizontalSpace(16),
             Expanded(child: PetInfo(breedEntity: breedEntity)),
-            FavoriteButton(),
+            FavoriteButton(imageId: breedEntity.imageUrl),
           ],
         ),
       ),
