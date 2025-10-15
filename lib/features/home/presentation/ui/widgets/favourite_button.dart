@@ -53,19 +53,3 @@ class _FavoriteButtonState extends State<FavoriteButton> {
     );
   }
 }
-
-class PetModel {
-  final String name;
-  final String gender;
-  final String age;
-  final String distance;
-  final String imageUrl;
-
-  PetModel({
-    required this.name,
-    required this.gender,
-    required this.age,
-    required this.distance,
-    required this.imageUrl,
-  });
-}
