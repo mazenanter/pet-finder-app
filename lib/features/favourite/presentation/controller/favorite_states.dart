@@ -46,3 +46,8 @@ class DeleteFavoriteFailure extends FavoriteStates {
   final String message;
   DeleteFavoriteFailure(this.message);
 }
+
+class ToggleFavoriteUpdated extends FavoriteStates {
+  final List<FavoriteModel> favorites;
+  ToggleFavoriteUpdated(this.favorites);
+}

@@ -7,7 +7,7 @@ import 'package:pet_finder_app/features/favourite/presentation/controller/favori
 
 import '../../../../../core/themes/colors_manager.dart';
 
-class FavoriteIconButton extends StatefulWidget {
+class FavoriteIconButton extends StatelessWidget {
   final bool isFavorite;
   final int favoriteId;
   const FavoriteIconButton({
@@ -17,50 +17,38 @@ class FavoriteIconButton extends StatefulWidget {
   });
 
   @override
-  State<FavoriteIconButton> createState() => _FavoriteIconButtonState();
-}
-
-class _FavoriteIconButtonState extends State<FavoriteIconButton> {
-  late bool isFavorite;
-
-  @override
-  void initState() {
-    super.initState();
-    isFavorite = widget.isFavorite;
-  }
-
-  @override
   Widget build(BuildContext context) {
-    return BlocListener<FavoriteCubit, FavoriteStates>(
-      listenWhen: (previous, current) =>
+    return BlocBuilder<FavoriteCubit, FavoriteStates>(
+      buildWhen: (previous, current) =>
+          current is GetFavoritesSuccess ||
+          current is AddBreedToFavoriteSuccess ||
           current is DeleteFavoriteSuccess ||
-          current is DeleteFavoriteFailure ||
-          current is DeleteFavoriteLoading,
-      listener: (context, state) {
-        if (state is DeleteFavoriteSuccess) {
-          setState(() {
-            isFavorite = false;
-          });
-          context.read<FavoriteCubit>().getFavorites();
-        }
+          current is ToggleFavoriteUpdated,
+
+      builder: (context, state) {
+        final cubit = context.read<FavoriteCubit>();
+        final isFavorite = cubit.favorites.any((fav) => fav.id == favoriteId);
+        return GestureDetector(
+          onTap: () async {
+            if (isFavorite) {
+              await cubit.deleteFavorite(favoriteId);
+            }
+            cubit.getFavorites();
+          },
+          child: Container(
+            padding: EdgeInsets.all(6.w),
+            decoration: BoxDecoration(
+              color: ColorsManager.green500,
+              shape: BoxShape.circle,
+            ),
+            child: HugeIcon(
+              icon: HugeIcons.strokeRoundedFavourite,
+              size: 18.sp,
+              color: isFavorite ? const Color(0xff00CEC9) : Colors.grey[300],
+            ),
+          ),
+        );
       },
-      child: GestureDetector(
-        onTap: () {
-          context.read<FavoriteCubit>().deleteFavorite(widget.favoriteId);
-        },
-        child: Container(
-          padding: EdgeInsets.all(6.w),
-          decoration: BoxDecoration(
-            color: ColorsManager.green500,
-            shape: BoxShape.circle,
-          ),
-          child: HugeIcon(
-            icon: HugeIcons.strokeRoundedFavourite,
-            size: 18.sp,
-            color: isFavorite ? const Color(0xff00CEC9) : Colors.grey[300],
-          ),
-        ),
-      ),
     );
   }
 }
