@@ -22,3 +22,9 @@ extension Navigation on BuildContext {
 
   void pop() => Navigator.of(this).pop();
 }
+
+extension ImageUrlX on String {
+  String toImageUrl() {
+    return 'https://cdn2.thecatapi.com/images/$this.jpg';
+  }
+}

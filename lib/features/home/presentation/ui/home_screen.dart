@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:pet_finder_app/core/di/dependency_injection.dart';
 import 'package:pet_finder_app/core/helpers/spacing.dart';
+import 'package:pet_finder_app/features/home/presentation/controller/home_cubit.dart';
 import 'package:pet_finder_app/features/home/presentation/ui/widgets/category_section.dart';
 import 'package:pet_finder_app/features/home/presentation/ui/widgets/custom_search_bar.dart';
 import 'package:pet_finder_app/features/home/presentation/ui/widgets/home_header.dart';
@@ -10,19 +13,22 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const HomeHeader(),
-            verticalSpace(20),
-            const CustomSearchBar(),
-            verticalSpace(20),
-            const CategoriesSection(),
-            verticalSpace(23),
-            Expanded(child: PetsList()),
-          ],
+    return BlocProvider<HomeCubit>(
+      create: (context) => getIt<HomeCubit>()..getBreeds(),
+      child: Scaffold(
+        body: SafeArea(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const HomeHeader(),
+              verticalSpace(20),
+              const CustomSearchBar(),
+              verticalSpace(20),
+              const CategoriesSection(),
+              verticalSpace(23),
+              Expanded(child: PetsList()),
+            ],
+          ),
         ),
       ),
     );
