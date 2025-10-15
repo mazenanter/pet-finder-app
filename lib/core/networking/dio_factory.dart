@@ -18,6 +18,7 @@ class DioFactory {
           headers: {
             'Content-Type': ApiConstants.contentType,
             'Accept': ApiConstants.accept,
+            'x-api-key': ApiConstants.apiKey,
           },
         );
 
