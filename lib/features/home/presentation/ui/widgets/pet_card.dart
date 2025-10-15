@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pet_finder_app/core/helpers/extension.dart';
 import 'package:pet_finder_app/core/helpers/spacing.dart';
+import 'package:pet_finder_app/features/home/domain/entities/breed_entity.dart';
 import 'package:pet_finder_app/features/home/presentation/ui/widgets/favourite_button.dart';
 import 'package:pet_finder_app/features/home/presentation/ui/widgets/pet_image.dart';
 import 'package:pet_finder_app/features/home/presentation/ui/widgets/pet_info.dart';
@@ -9,14 +10,15 @@ import 'package:pet_finder_app/features/home/presentation/ui/widgets/pet_info.da
 import '../../../../../core/routing/routes.dart';
 
 class PetCard extends StatelessWidget {
-  final PetModel pet;
-
-  const PetCard({super.key, required this.pet});
+  final BreedEntity breedEntity;
+  final String imageUrl;
+  const PetCard({super.key, required this.breedEntity, required this.imageUrl});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => context.pushNamed(Routes.petDetailsScreen, arguments: pet),
+      onTap: () =>
+          context.pushNamed(Routes.petDetailsScreen, arguments: breedEntity),
       child: Container(
         padding: EdgeInsets.all(12.w),
         decoration: BoxDecoration(
@@ -34,11 +36,11 @@ class PetCard extends StatelessWidget {
         child: Row(
           children: [
             Hero(
-              tag: 'pet_${pet.name}',
-              child: PetImage(imageUrl: pet.imageUrl),
+              tag: 'pet_${breedEntity.name}',
+              child: PetImage(imageUrl: imageUrl),
             ),
             horizontalSpace(16),
-            Expanded(child: PetInfo(pet: pet)),
+            Expanded(child: PetInfo(breedEntity: breedEntity)),
             FavoriteButton(),
           ],
         ),
